@@ -47,26 +47,62 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
-
+#### Step1:- Open Quartus II Software.
+#### Step2:- Create a new project such that the name of the project is used for name of the module.
+#### Step3:- Develop the program for both Multiplexer and De-Multiplexer.
+#### Step4:- Run the RTL Simulation.
+#### Step5:- Simulate the timing Diagram.
+#### Step6:- Validate the outputs.
 
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: P>Nevil Joe Ferdin
+RegisterNumber: 212222050041 
+```
+```verilog
+~FOR MULTIPLEXER~
 
+module mux(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+```
+```verilog
+~FOR DE-MULTIPLEXER~
 
-
+module demux(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
+```
 
 
 
 ### RTL LOGIC  
 
+#### FOR MULTIPLEXER
+![muxrtl](https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/3c028d6b-5f5e-4f31-a6f4-4510ffc151e4)
 
+#### FOR DE-MULTIPLEXER
 
+![demux rtl](https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/9c3fb634-ba45-42b9-8a25-9068c6444ac5)
 
 
 
@@ -74,15 +110,25 @@ RegisterNumber:
 
 ### TIMING DIGRAMS  
 
+#### FOR MULTIPLEXER
+![muxtd](https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/dcbb35b2-980c-4f75-a526-763024c9ef0d)
 
+#### FOR DE-MULTIPLEXER
+![demuxtd](https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/708bac47-32d4-4a96-9929-1c74e501596e)
 
 
 
 ### TRUTH TABLE 
 
+#### FOR MULTIPLEXER
+<img width="235" alt="muxtt" src="https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/be1e18c4-ccf8-4f72-b6e4-b54463a15375">
 
 
+#### FOR DE-MULTIPLEXER
+
+<img width="614" alt="demuxtt" src="https://github.com/nevil-ferdin/Exercise-07-Multiplexer-and-De-multiplexer/assets/115524975/cb27627b-7d83-4e79-b181-6e50d469bc48">
 
 
 
 ### RESULTS 
++ Therefore 4X1 multiplexer and 1X4 de multiplexer are successfully implemented using verilog and validate its outputs
